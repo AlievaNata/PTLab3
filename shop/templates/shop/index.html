@@ -1,26 +1,53 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Товары</title>
-</head>
-<body>
+{% extends "shop/base.html" %}
+
+{% block title %}Товары{% endblock %}
+
+{% block content %}
     <div>
-        <h3>Список</h3>
+        <h3>Каталог мягкой мебели</h3>
+        <p>
+            Категории:
+            <a href="{% url 'index' %}">Все</a>
+            {% for c in categories %}
+                | <a href="{% url 'index' %}?category={{ c.id }}">{{ c.name }}</a>
+            {% endfor %}
+        </p>
+        {% if selected_category %}
+            <p>Выбрана категория: {{ selected_category.name }}</p>
+        {% endif %}
         <table>
             <tr>
                 <td><p>Наименование</p></td>
+                <td><p>Категория</p></td>
+                <td><p>Описание</p></td>
                 <td><p>Цена</p></td>
                 <td></td>
             </tr>
             {% for p in products %}
                 <tr>
                     <td><p>{{ p.name }}</p></td>
-                    <td><p>{{ p.price }}</p></td>
-                    <td><p><a href="/buy/{{ p.id }}">Купить</a></p></td>
+                    <td><p>{{ p.category.name|default:"—" }}</p></td>
+                    <td><p>{{ p.description }}</p></td>
+                    <td><p>{{ p.price }} ₽</p></td>
+                    <td>
+                        {% if p.id in cart_product_ids %}
+                            <span>В корзине</span>
+                            <form method="post" action="{% url 'cart_remove' p.id %}" style="display:inline">{% csrf_token %}
+                                <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+                                <button type="submit">Убрать</button>
+                            </form>
+                        {% else %}
+                            <form method="post" action="{% url 'cart_add' p.id %}" style="display:inline">{% csrf_token %}
+                                <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+                                <button type="submit">В корзину</button>
+                            </form>
+                        {% endif %}
+                        <a href="{% url 'buy' p.id %}">Купить сразу</a>
+                    </td>
                 </tr>
+            {% empty %}
+                <tr><td colspan="5"><p>Товаров пока нет.</p></td></tr>
             {% endfor %}
         </table>
     </div>
-</body>
-</html>
+{% endblock %}

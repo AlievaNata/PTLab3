@@ -1,15 +1,103 @@
+# Категории
+- model: shop.category
+  pk: 1
+  fields:
+    name: "Диваны"
+- model: shop.category
+  pk: 2
+  fields:
+    name: "Кресла"
+- model: shop.category
+  pk: 3
+  fields:
+    name: "Пуфы и банкетки"
+- model: shop.category
+  pk: 4
+  fields:
+    name: "Кушетки"
+
+# Товары
 - model: shop.product
   pk: 1
   fields:
-    name: Стол
-    price: 2000
+    name: "Диван прямой «Лондон»"
+    price: 54900
+    category: 1
+    description: "Трёхместный диван с механизмом «еврокнижка», обивка из велюра, ящик для белья."
 - model: shop.product
   pk: 2
   fields:
-    name: Стул
-    price: 1000
+    name: "Диван угловой «Милан»"
+    price: 78900
+    category: 1
+    description: "Угловой диван с оттоманкой, механизм «дельфин», обивка из рогожки."
 - model: shop.product
   pk: 3
   fields:
-    name: Табурет
-    price: 500
+    name: "Диван-кровать «Прага»"
+    price: 39900
+    category: 1
+    description: "Компактный диван-кровать с ортопедическим основанием, спальное место 140x200 см."
+- model: shop.product
+  pk: 4
+  fields:
+    name: "Диван двухместный «Бостон»"
+    price: 32500
+    category: 1
+    description: "Небольшой диван для гостиной или кухни, каркас из массива берёзы."
+- model: shop.product
+  pk: 5
+  fields:
+    name: "Кресло «Уют»"
+    price: 12900
+    category: 2
+    description: "Мягкое кресло с высокой спинкой и подлокотниками, обивка из флока."
+- model: shop.product
+  pk: 6
+  fields:
+    name: "Кресло-качалка «Нордик»"
+    price: 17400
+    category: 2
+    description: "Кресло-качалка в скандинавском стиле, съёмные чехлы, ножки из бука."
+- model: shop.product
+  pk: 7
+  fields:
+    name: "Кресло-реклайнер «Релакс»"
+    price: 24800
+    category: 2
+    description: "Кресло с откидной спинкой и подножкой, обивка из экокожи."
+- model: shop.product
+  pk: 8
+  fields:
+    name: "Пуф «Куб»"
+    price: 2900
+    category: 3
+    description: "Квадратный пуф с ящиком для хранения, обивка из велюра."
+- model: shop.product
+  pk: 9
+  fields:
+    name: "Пуф-трансформер «Мини»"
+    price: 3900
+    category: 3
+    description: "Раскладывается в спальное место для гостей, обивка из микрофибры."
+- model: shop.product
+  pk: 10
+  fields:
+    name: "Банкетка «Классик»"
+    price: 5600
+    category: 3
+    description: "Банкетка для прихожей с мягким сиденьем и полкой для обуви."
+- model: shop.product
+  pk: 11
+  fields:
+    name: "Кушетка «Ривьера»"
+    price: 21900
+    category: 4
+    description: "Кушетка с изогнутым изголовьем, обивка из бархата, ножки из металла."
+- model: shop.product
+  pk: 12
+  fields:
+    name: "Кушетка «Версаль»"
+    price: 26500
+    category: 4
+    description: "Классическая кушетка с каретной стяжкой и резными ножками."
